@@ -3,8 +3,8 @@ import React, { Component } from 'react';
 class Navigation extends Component{
   render(){
     return (
-	    <nav style={{padding: '1em', display: 'flex', justifyContent: 'flex-end'}}>
-	    	<p> Sign Out </p>
+	    <nav style={{display: 'flex', justifyContent: 'flex-end'}}>
+	    	<p className='f3 link dim black underline pa3 pointer'> Sign Out </p>
 	    </nav>
   );
   }
