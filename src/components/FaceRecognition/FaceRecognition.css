@@ -1,0 +1,12 @@
+.bounding-box{
+    background: #149df2;
+    color: #fff;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    line-height: 0.75rem;
+    display: flex;
+    align-items: baseline;
+    font-weight: 700;
+    padding: 1px 3px;
+    border-radius: 2px 2px 0 0;
+}
