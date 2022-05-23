@@ -5,6 +5,7 @@ import Logo from './components/Logo/Logo';
 import Rank from './components/Rank/Rank';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
+import Signin from './components/Signin/Signin';
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 // import Clarifai from 'clarifai';
@@ -21,7 +22,8 @@ class App extends Component{
     this.state = {
       input: '',
       imageUrl: '',
-      box: {}
+      box: {},
+      route: 'signin'
     }
   }
 
@@ -154,13 +156,15 @@ class App extends Component{
       }}
     />
       <Navigation />
-      <Logo />
-      <Rank />
-      <ImageLinkForm 
-        onInputChange={this.onInputChange} 
-        onButtonSubmit={this.onButtonSubmit}
-        input={this.state.input} />                  
-      <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+      <Signin />
+        <Logo />
+        <Rank />
+        <ImageLinkForm 
+          onInputChange={this.onInputChange} 
+          onButtonSubmit={this.onButtonSubmit}
+          input={this.state.input} />                  
+        <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+
     </div>
     );
   }
