@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class Signin extends Component{
+class Register extends Component{
   render(){
     const onRouteChange  = this.props.onRouteChange
     return (
@@ -12,8 +12,22 @@ class Signin extends Component{
               className="ba b--transparent ph0 mh0"
             >
               <legend className="f2 fw6 ph0 mh0">
-                Sign In
+                Register
               </legend>
+              <div className="mt3">
+                <label
+                  className="db fw6 lh-copy f6"
+                  htmlfor="name"
+                >
+                  Name
+                </label>
+                <input
+                  className="pa2 input-reset ba bg-transparent hover-bg-black hover-white w-100"
+                  type="text"
+                  name="name"
+                  id="name"
+                />
+              </div>
               <div className="mt3">
                 <label
                   className="db fw6 lh-copy f6"
@@ -47,18 +61,9 @@ class Signin extends Component{
               <input
                 className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib"
                 type="submit"
-                value="Sign in"
+                value="Register"
                 onClick = {() => onRouteChange('home')}
               />
-            </div>
-            <div className="lh-copy mt3 pointer">
-              <p
-                href="#0"
-                className="f6 link dim black db"
-                onClick = {() => onRouteChange('register')}
-              >
-                Register
-              </p>              
             </div>
           </form>
         </main> 
@@ -67,4 +72,4 @@ class Signin extends Component{
   }
 }
 
-export default Signin;
+export default Register;

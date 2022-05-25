@@ -6,6 +6,7 @@ import Rank from './components/Rank/Rank';
 import ImageLinkForm from './components/ImageLinkForm/ImageLinkForm';
 import FaceRecognition from './components/FaceRecognition/FaceRecognition';
 import Signin from './components/Signin/Signin';
+import Register from './components/Register/Register';
 import Particles from "react-tsparticles";
 import { loadFull } from "tsparticles";
 // import Clarifai from 'clarifai';
@@ -23,7 +24,8 @@ class App extends Component{
       input: '',
       imageUrl: '',
       box: {},
-      route: 'signin'
+      route: 'home',
+      isSignedIn: false
     }
   }
 
@@ -65,6 +67,16 @@ class App extends Component{
     //   .catch(err => console.log(err));
   }
 
+
+  onRouteChange = (route) => {
+    if (route === 'home'){
+      this.setState({isSignedIn: true})
+    }
+    else {
+      this.setState({isSignedIn: false})
+    }
+    this.setState({route: route})
+  }
 
   render(){
   const particlesInit = async (main) => {
@@ -132,7 +144,7 @@ class App extends Component{
               default: "bounce",
             },
             random: false,
-            speed: 3,
+            speed: 1,
             straight: false,
           },
           number: {
@@ -140,7 +152,7 @@ class App extends Component{
               enable: true,
               area: 150,
             },
-            value: 50,
+            value: 30,
           },
           opacity: {
             value: 0.2,
@@ -153,17 +165,26 @@ class App extends Component{
           },
         },
         detectRetina: true,
-      }}
-    />
-      <Navigation />
-      <Signin />
-        <Logo />
-        <Rank />
-        <ImageLinkForm 
-          onInputChange={this.onInputChange} 
-          onButtonSubmit={this.onButtonSubmit}
-          input={this.state.input} />                  
-        <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />
+      }} />
+
+      <Navigation onRouteChange={this.onRouteChange} isSignedIn={this.state.isSignedIn} />
+      
+      {/* I was having issues with wrapping the entire thing so I improvised */}
+      { this.state.route === 'home' 
+        ? 
+        <div>
+          <Logo /> 
+          <Rank />
+          <ImageLinkForm onInputChange={this.onInputChange} onButtonSubmit={this.onButtonSubmit} input={this.state.input} />               
+          <FaceRecognition box={this.state.box} imageUrl={this.state.imageUrl} />  
+        </div>
+        : 
+        (
+          this.state.route === 'signin' 
+          ? <Signin onRouteChange={this.onRouteChange}/>
+          : <Register />  
+        )
+        }
 
     </div>
     );
